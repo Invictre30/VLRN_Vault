@@ -654,12 +654,11 @@ var BASE = '../assets/';
 var productsData = [
   { name: 'Celestial Skin Collection', line: 'Skincare', cat: 'skincare', desc: 'A skincare line designed to hydrate, nourish, and enhance your natural glow—creating a smooth, radiant base for any look.', img: BASE + 'CelestialSkin.jpg', glow: 'rgba(107, 40, 200, 0.4)' },
   { name: 'Supernova Lip Gloss', line: 'Makeup', cat: 'makeup', desc: 'High-shine lip tint in five cosmic shades: Petal Pink, Stellar Red, Solar Gold, Crimson Nova, Galaxy Fuchsia.', img: BASE + 'Liptint1.jpg', glow: 'rgba(196, 79, 208, 0.4)' },
-  { name: 'Nine-Tails Fox Liner', line: 'Makeup', cat: 'makeup', desc: 'Ultra-precise gel eyeliner with fan-shaped stencil guide for perfect cat eyes every time.', img: BASE + 'Fox1.jpg', glow: 'rgba(107, 40, 200, 0.35)' },
+  { name: 'Nine-Tails Fox Collection', line: 'Makeup', cat: 'makeup', desc: 'Easy-to-use stencils that help create precise and intricate designs, perfect for both beginners and advanced users.', img: BASE + 'FoxLogo1.jpg', glow: 'rgba(107, 40, 200, 0.35)' },
   { name: 'Star Dust Body Glitter', line: 'Makeup', cat: 'makeup', desc: 'Vials of body-safe loose glitter — blue, fuchsia, purple, hearts, and pearl — for the full supernova effect.', img: BASE + 'Bottles1.jpg', glow: 'rgba(168, 85, 224, 0.4)' },
-  { name: 'Nine-Tails Stencil Set', line: 'Tools', cat: 'tools', desc: 'Fan-shaped guide set with 9 petal templates: Fish Tail, Double Up, Cat Eyeline, Drama, Smoky, and more.', img: BASE + 'FoxLogo1.jpg', glow: 'rgba(61, 18, 120, 0.4)' },
   { name: 'Morphéa Cosmetic Pouch', line: 'Tools', cat: 'tools', desc: 'Crystal-clear holographic makeup pouch with calligraphic zipper pull. Fits the full Morphéa product range.', img: BASE + 'mini morph kit.png', glow: 'rgba(107, 40, 200, 0.3)' },
   { name: 'Complimentary Soap Gift', line: 'Body', cat: 'body', desc: "A handcrafted soap designed as a free gift with every purchase, featuring Morphéa's signature cosmic-inspired aesthetic to enhance the customer experience and strengthen brand engagement.", img: BASE + 'Product Soap 1.jpg', glow: 'rgba(40, 80, 180, 0.4)' },
-  { name: 'Galaxy Body Mist', line: 'Body', cat: 'body', desc: 'Light shimmer-infused body spray in the Morphéa signature cosmic accord — neroli, ambrette, and star anise.', img: BASE + 'MiniBottle2.jpg', glow: 'rgba(107, 40, 200, 0.3)' },
+  { name: 'Starfall Effects Collection', line: 'Body', cat: 'body', desc: 'A range of shimmer and glitter products designed to enhance any look with dimension, shine, and eye-catching detail.', img: BASE + 'MiniBottle2.jpg', glow: 'rgba(107, 40, 200, 0.3)' },
 ];
 
 var productsGrid = document.getElementById('productsGrid');
