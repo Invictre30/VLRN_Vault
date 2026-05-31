@@ -16,8 +16,8 @@ const photos = [
   { src: '../assets/IMG_6723 3.jpg',   title: 'Halo-Halo: Layers of a Filipino Identity', cat: 'portrait',     desc: 'A visual exploration of identity through layers, texture, and movement.' },
   { src: '../assets/IMG_9950.jpg',     title: 'Afternoon Companion',  cat: 'candid',       desc: 'A quiet moment with a golden Cat' },
   { src: '../assets/IMG_9928.jpg',     title: 'Midday Pause',         cat: 'nature',       desc: 'A quiet pause between rides, captured under the shade of trees.' },
-  { src: '../assets/IMG_0069.jpg',     title: 'Open Field',           cat: 'nature',       desc: 'White bird on soft green grass.' },
-  { src: '../assets/IMG_0067.jpg',     title: 'Street Birds',         cat: 'documentary',  desc: 'Pigeons gathered on pavement.' },
+  { src: '../assets/IMG_0069.jpg',     title: 'Solitude in Contrast',           cat: 'nature',       desc: 'A white dove stands at the boundary between shadow and light, creating a contrast that emphasizes simplicity, isolation, and the quiet elegance.' },
+  { src: '../assets/IMG_0067.jpg',     title: 'United Gaze',         cat: 'documentary',  desc: 'Three geese rest together on the campus lawn with their synchronized posture and shared focus creating a sense of unity, companionship, and quiet observation.' },
 ];
 
 /* ── GALLERY ── */
