@@ -13,11 +13,11 @@
 ══════════════════════════════════════ */
 const photos = [
   { src: '/VLRN_Vault/assets/Portrait img.jpg', title: 'Lantern Garden', cat: 'portrait', desc: 'Kimono and candlelight among blooms.' },
-  { src: '/VLRN_Vault/assets/IMG_6723 3.jpg', title: 'Cultural Performance', cat: 'portrait', desc: 'Traditional costume, vibrant movement.' },
-  { src: '/VLRN_Vault/assets/IMG_9950.jpg', title: 'Afternoon Companion', cat: 'candid', desc: 'A quiet moment with a golden dog.' },
+  { src: '/VLRN_Vault/assets/IMG_6723 3.jpg', title: 'Cultural Performance', cat: 'portrait', desc: 'Traditional costume in vibrant motion.' },
+  { src: '/VLRN_Vault/assets/IMG_9950.jpg', title: 'Golden Stray', cat: 'candid', desc: 'An orange cat resting in quiet stillness.' },
   { src: '/VLRN_Vault/assets/IMG_9928.jpg', title: 'Canopy Light', cat: 'nature', desc: 'Afternoon light filtering through foliage.' },
-  { src: '/VLRN_Vault/assets/IMG_0069.jpg', title: 'Open Field', cat: 'nature', desc: 'White bird on soft green grass.' },
-  { src: '/VLRN_Vault/assets/IMG_0067.jpg', title: 'Street Birds', cat: 'documentary', desc: 'Pigeons gathered on pavement.' },
+  { src: '/VLRN_Vault/assets/IMG_0069.jpg', title: 'Open Field', cat: 'nature', desc: 'A lone dove on soft green grass.' },
+  { src: '/VLRN_Vault/assets/IMG_0067.jpg', title: 'Street Birds', cat: 'documentary', desc: 'Geese gathered along a quiet urban path.' },
 ];
 
 /* ── GALLERY ── */
