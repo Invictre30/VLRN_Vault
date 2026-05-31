@@ -1,118 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Photography — VLRN Vault</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="PhotoStyle.css" />
-</head>
-<body>
+/* ══════════════════════════════════════
+   VLRN Vault — Photography Page JS
+   photo-main.js
+══════════════════════════════════════ */
 
-  <div class="cursor-dot"  id="dot"></div>
-  <div class="cursor-ring" id="ring"></div>
+/* ══════════════════════════════════════
+   PHOTO DATA — add your photos here!
+   src:   relative path e.g. "assets/IMG_9950.png"
+   title: display name
+   cat:   "portrait" | "nature" | "candid" | "documentary"
+   large: true = spans wider column (optional)
+   desc:  short caption shown in lightbox
+══════════════════════════════════════ */
+const photos = [
+  { src: '../assets/Portrait img.jpg', title: 'Lantern Garden',       cat: 'portrait',     desc: 'Kimono and candlelight among blooms.' },
+  { src: '../assets/IMG_6723 3.jpg',   title: 'Cultural Performance', cat: 'portrait',     desc: 'Traditional costume, vibrant movement.' },
+  { src: '../assets/IMG_9950.jpg',     title: 'Afternoon Companion',  cat: 'candid',       desc: 'A quiet moment with a golden dog.' },
+  { src: '../assets/IMG_9928.jpg',     title: 'Canopy Light',         cat: 'nature',       desc: 'Afternoon light filtering through foliage.' },
+  { src: '../assets/IMG_0069.jpg',     title: 'Open Field',           cat: 'nature',       desc: 'White bird on soft green grass.' },
+  { src: '../assets/IMG_0067.jpg',     title: 'Street Birds',         cat: 'documentary',  desc: 'Pigeons gathered on pavement.' },
+];
 
-  <nav class="nav">
-    <div class="nav-left">
-      <a href="../index.html" class="vlrn-logo-link">
-        <img src="../assets/vlrn5.png" alt="VLRN Vault" class="vlrn-logo-img"
-          onerror="this.style.display='none'" />
-      </a>
-      <div class="nav-divider"></div>
-      <a href="../photography.html" class="nav-back"><span class="arr">←</span> Photography</a>
-    </div>
-    <span class="nav-title">Gallery</span>
-  </nav>
+/* ── GALLERY ── */
+const grid       = document.getElementById('masonryGrid');
+const emptyState = document.getElementById('emptyState');
+const csMsg      = document.getElementById('comingSoonMsg');
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="hero-row">
-      <div class="hero-left">
-        <span class="page-eyebrow reveal">02 — Photography</span>
-        <h1 class="page-title reveal">Photo<br><em>graphy</em></h1>
+function buildGallery(filter) {
+  const filtered = filter === 'all' ? photos : photos.filter(p => p.cat === filter);
+  grid.innerHTML = '';
+  csMsg.style.display = 'none';
+
+  if (photos.length === 0) {
+    emptyState.style.display = 'block';
+    grid.style.display = 'none';
+    return;
+  }
+  emptyState.style.display = 'none';
+  grid.style.display = '';
+
+  if (filtered.length === 0) {
+    csMsg.style.display = 'block';
+    return;
+  }
+
+  filtered.forEach((p, i) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item reveal' + (p.large ? ' large' : '');
+    item.dataset.index = photos.indexOf(p);
+    item.innerHTML = `
+      <img src="${p.src}" alt="${p.title}" loading="lazy"
+        onerror="this.closest('.gallery-item').style.display='none'" />
+      <div class="gallery-item-overlay">
+        <p class="gallery-item-cat">${p.cat}</p>
+        <h3 class="gallery-item-title">${p.title}</h3>
       </div>
-      <div class="hero-right">
-        <p class="hero-desc reveal">
-          A mixed collection of candid and composed shots — portrait, nature, documentary, and editorial — exploring light, form, and quiet emotion through the lens.
-        </p>
-        <div class="hero-meta reveal">
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Style</span>
-            <span class="hero-meta-val">Mixed · Candid & Composed</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-label">Mood</span>
-            <span class="hero-meta-val">Soft · Airy · Editorial</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <div class="gallery-item-expand">↗</div>
+    `;
+    item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+    grid.appendChild(item);
 
-  <div class="hero-rule reveal"></div>
+    /* staggered reveal */
+    requestAnimationFrame(() => {
+      setTimeout(() => item.classList.add('in'), i * 80);
+    });
+  });
 
-  <!-- FILTER BAR -->
-  <div class="filter-bar reveal">
-    <span class="filter-label">View</span>
-    <button class="f-btn active" data-cat="all">All</button>
-    <button class="f-btn" data-cat="portrait">Portrait</button>
-    <button class="f-btn" data-cat="nature">Nature</button>
-    <button class="f-btn" data-cat="candid">Candid</button>
-    <button class="f-btn" data-cat="documentary">Documentary</button>
-  </div>
+  /* re-attach cursor hover to new items */
+  grid.querySelectorAll('.gallery-item').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+  });
+}
 
-  <!-- GALLERY -->
-  <div class="gallery-section">
-    <div class="masonry" id="masonryGrid"></div>
+/* ── LIGHTBOX ── */
+const lb      = document.getElementById('lightbox');
+const lbImg   = document.getElementById('lbImg');
+const lbTitle = document.getElementById('lbTitle');
+const lbCat   = document.getElementById('lbCat');
+let   lbIndex = 0;
 
-    <div class="coming-soon-wrap" id="comingSoonMsg" style="display:none;">
-      <p class="cs-eyebrow">Coming Soon</p>
-      <h2 class="cs-title">More to Come</h2>
-      <p class="cs-desc">This collection is being curated — check back soon for new work.</p>
-    </div>
+function openLightbox(idx) {
+  lbIndex = idx;
+  const p = photos[idx];
+  lbImg.src        = p.src;
+  lbImg.alt        = p.title;
+  lbTitle.textContent = p.title;
+  lbCat.textContent   = p.cat + (p.desc ? ' — ' + p.desc : '');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  lbIndex = (lbIndex + dir + photos.length) % photos.length;
+  openLightbox(lbIndex);
+}
 
-    <div class="coming-soon-wrap" id="emptyState">
-      <p class="cs-eyebrow">Gallery</p>
-      <h2 class="cs-title">Photography<br><em style="font-style:italic;color:var(--accent2)">Coming Soon</em></h2>
-      <p class="cs-desc">Portrait, editorial, and candid photography — exploring light, form, and emotion. Gallery launching soon.</p>
-      <div class="mood-placeholder">
-        <div class="mp-cell">◈</div>
-        <div class="mp-cell">◈</div>
-        <div class="mp-cell">◈</div>
-        <div class="mp-cell">◈</div>
-        <div class="mp-cell">◈</div>
-        <div class="mp-cell">◈</div>
-      </div>
-    </div>
-  </div>
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => navLightbox(-1));
+document.getElementById('lbNext').addEventListener('click', () => navLightbox(1));
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'ArrowLeft')  navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-    <button class="lightbox-close" id="lbClose" aria-label="Close">✕</button>
-    <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">‹</button>
-    <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">›</button>
-    <div class="lightbox-inner">
-      <div class="lightbox-img-wrap">
-        <img src="" alt="" id="lbImg" />
-      </div>
-      <div class="lightbox-caption">
-        <h3 id="lbTitle"></h3>
-        <p  id="lbCat"></p>
-      </div>
-    </div>
-  </div>
+/* ── FILTERS ── */
+document.querySelectorAll('.f-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildGallery(btn.dataset.cat);
+  });
+});
 
-  <!-- SCROLL TO TOP -->
-  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="Back to top">
-    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-  </a>
+/* ── CUSTOM CURSOR ── */
+const dot  = document.getElementById('dot');
+const ring = document.getElementById('ring');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+(function follow() {
+  rx += (mx-rx) * .12;
+  ry += (my-ry) * .12;
+  dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(follow);
+})();
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+});
 
-  <footer>
-    <p>© 2026 VLRN Vault — Princess Valerie. All rights reserved.</p>
-  </footer>
+/* ── SCROLL REVEAL ── */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const sibs = [...(e.target.parentElement?.querySelectorAll('.reveal') || [])];
+      setTimeout(() => e.target.classList.add('in'), sibs.indexOf(e.target) * 100);
+      ro.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(r => ro.observe(r));
 
-  <script src="Photo-main.js"></script>
-</body>
-</html>
+/* ── SCROLL TO TOP ── */
+const scrollBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 300));
+scrollBtn.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top:0, behavior:'smooth' }); });
+
+/* ── INIT ── */
+buildGallery('all');
