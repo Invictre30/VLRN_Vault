@@ -450,7 +450,7 @@ var packagingItems = [
     title: 'Morphéa Stencil Collection',
     desc: 'Easy-to-use stencils that help create precise and intricate designs, perfect for both beginners and advanced users.',
     tag: 'Tools',
-    img: '../assets/FoxLogo1.jpg',
+    img: '../assets/Fox1.jpg',
     bg: 'linear-gradient(135deg, #0a1a3a, #1a3a6a)',
     icon: '🦊'
   },
