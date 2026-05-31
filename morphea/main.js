@@ -372,9 +372,7 @@ function buildShoppingBagSlideshow(wrap) {
 /* ---- ORBIT LIPTINT SLIDESHOW builder ---- */
 function buildOrbitLiptintSlideshow(wrap) {
   var imgs = [
-    '../assets/Liptint1.jpg',
-    '../assets/GreenLipstick.jpg',
-    '../assets/PinkLipstick.jpg',
+    '../assets/Liptint1.jpg'
   ];
   wrap.innerHTML = '<div class="olt-wrap"></div>';
   var ss = wrap.querySelector('.olt-wrap');
@@ -447,15 +445,7 @@ var packagingItems = [
     icon: '🪩',
     isOrbitLips: true,
   },
-  {
-    title: 'Orbit Liptint',
-    desc: 'A lip collection that delivers comfortable, buildable color while keeping lips soft, smooth, and effortlessly vibrant.',
-    tag: 'Makeup',
-    img: null,
-    isOrbitLiptint: true,
-    bg: 'linear-gradient(135deg, #5a1a6a, #8a2a90)',
-    icon: '💄'
-  },
+  
   {
     title: 'Morphéa Stencil Collection',
     desc: 'Easy-to-use stencils that help create precise and intricate designs, perfect for both beginners and advanced users.',
@@ -472,14 +462,7 @@ var packagingItems = [
     bg: 'linear-gradient(135deg, #0d0518, #1e0a42)',
     icon: '🎨'
   },
-  {
-    title: 'Stellar Visions Palette',
-    desc: 'A curated eyeshadow palette featuring versatile shades for both subtle and bold looks.',
-    tag: 'Makeup',
-    img: '../assets/StellarVisionsPalette.jpg',
-    bg: 'linear-gradient(135deg, #1a0a2e, #4a1a8a)',
-    icon: '🌟'
-  },
+
   {
     title: 'Mini Handcarry Bag',
     desc: 'A portable storage bag designed to keep your makeup organized and easy to carry.',
