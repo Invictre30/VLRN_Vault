@@ -17,7 +17,7 @@ const photos = [
   { src: '/VLRN_Vault/assets/IMG_9950.jpg', title: 'Golden Stray', cat: 'candid', desc: 'An orange cat resting in quiet stillness.' },
   { src: '/VLRN_Vault/assets/IMG_9928.jpg', title: 'Canopy Light', cat: 'nature', desc: 'Afternoon light filtering through foliage.' },
   { src: '/VLRN_Vault/assets/IMG_0069.jpg', title: 'Open Field', cat: 'nature', desc: 'A lone dove on soft green grass.' },
-  { src: '/VLRN_Vault/assets/IMG_0067.jpg', title: 'Street Birds', cat: 'documentary', desc: 'Geese gathered along a quiet urban path.' },
+  { src: '/VLRN_Vault/assets/IMG_0067.jpg', title: 'Geeses', cat: 'documentary', desc: 'Geeses gathered along a quiet urban path.' },
 ];
 
 /* ── GALLERY ── */
