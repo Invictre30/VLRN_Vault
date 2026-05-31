@@ -12,12 +12,12 @@
    desc:  short caption shown in lightbox
 ══════════════════════════════════════ */
 const photos = [
-  { src: '../assets/Portrait img.png', title: 'Lantern Garden',       cat: 'portrait',     desc: 'Kimono and candlelight among blooms.' },
-  { src: '../assets/IMG_6723 3.png',   title: 'Cultural Performance', cat: 'portrait',     desc: 'Traditional costume, vibrant movement.' },
-  { src: '../assets/IMG_9950.png',     title: 'Afternoon Companion',  cat: 'candid',       desc: 'A quiet moment with a golden dog.' },
-  { src: '../assets/IMG_9928.png',     title: 'Canopy Light',         cat: 'nature',       desc: 'Afternoon light filtering through foliage.' },
-  { src: '../assets/IMG_0069.png',     title: 'Open Field',           cat: 'nature',       desc: 'White bird on soft green grass.' },
-  { src: '../assets/IMG_0067.png',     title: 'Street Birds',         cat: 'documentary',  desc: 'Pigeons gathered on pavement.' },
+  { src: '../assets/Portrait img.jpg', title: 'Lantern Garden',       cat: 'portrait',     desc: 'Kimono and candlelight among blooms.' },
+  { src: '../assets/IMG_6723 3.jpg',   title: 'Cultural Performance', cat: 'portrait',     desc: 'Traditional costume, vibrant movement.' },
+  { src: '../assets/IMG_9950.jpg',     title: 'Afternoon Companion',  cat: 'candid',       desc: 'A quiet moment with a golden dog.' },
+  { src: '../assets/IMG_9928.jpg',     title: 'Canopy Light',         cat: 'nature',       desc: 'Afternoon light filtering through foliage.' },
+  { src: '../assets/IMG_0069.jpg',     title: 'Open Field',           cat: 'nature',       desc: 'White bird on soft green grass.' },
+  { src: '../assets/IMG_0067.jpg',     title: 'Street Birds',         cat: 'documentary',  desc: 'Pigeons gathered on pavement.' },
 ];
 
 /* ── GALLERY ── */
