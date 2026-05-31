@@ -464,14 +464,6 @@ var packagingItems = [
   },
 
   {
-    title: 'Mini Handcarry Bag',
-    desc: 'A portable storage bag designed to keep your makeup organized and easy to carry.',
-    tag: 'Tools',
-    img: '../assets/mini morph kit.png',
-    bg: 'linear-gradient(135deg, #0d0518, #2a0a58)',
-    icon: '👜'
-  },
-  {
     title: 'Thank You Card',
     desc: 'Brand collateral card with the calligraphic heart mark and cosmic tagline. Included with every purchase.',
     tag: 'Collateral',
